@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://6hjuqepvfqlj"]
+
+[ext_resource type="Script" path="res://resources/unit.gd" id="1_x4fsx"]
+[ext_resource type="Texture2D" uid="uid://dgrscsfpc81bw" path="res://art/yui.png" id="2_lx45i"]
+
+[resource]
+script = ExtResource("1_x4fsx")
+title = "Yui"
+max_hp = 100
+c_hp = 100
+manah = 100
+tags = ["girl", "anime"]
+spells = ["Piss", "Swan Song"]
+actions = ["stomp"]
+tex = ExtResource("2_lx45i")

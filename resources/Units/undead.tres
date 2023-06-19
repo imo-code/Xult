@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://1i0knfpuxewb"]
+
+[ext_resource type="Script" path="res://resources/unit.gd" id="1_s1jy1"]
+[ext_resource type="Texture2D" uid="uid://dlakg8icdjojg" path="res://art/zomb.png" id="2_3qnyg"]
+
+[resource]
+script = ExtResource("1_s1jy1")
+title = "Undead"
+max_hp = 0
+c_hp = 0
+manah = 0
+tags = ["undead", "anime", "girl"]
+spells = ["vomit", "piss"]
+actions = ["bite"]
+tex = ExtResource("2_3qnyg")
