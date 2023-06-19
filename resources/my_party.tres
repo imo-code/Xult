@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Party" load_steps=5 format=3 uid="uid://0jvk31054rdt"]
+
+[ext_resource type="Resource" uid="uid://crd7svkfnkg72" path="res://resources/Units/histui.tres" id="1_jojn0"]
+[ext_resource type="Resource" uid="uid://1i0knfpuxewb" path="res://resources/Units/undead.tres" id="2_vogm5"]
+[ext_resource type="Resource" uid="uid://6hjuqepvfqlj" path="res://resources/Units/yui.tres" id="3_0js8j"]
+[ext_resource type="Script" path="res://resources/party.gd" id="4_opse7"]
+
+[resource]
+script = ExtResource("4_opse7")
+left = ExtResource("2_vogm5")
+mid = ExtResource("1_jojn0")
+right = ExtResource("3_0js8j")

@@ -8,19 +8,116 @@ script = ExtResource("1_tx6b1")
 [node name="Node2DMenu" type="Node2D" parent="."]
 
 [node name="Button_to_battle" type="Button" parent="Node2DMenu"]
-visible = false
 offset_left = 1728.0
 offset_top = 960.0
-offset_right = 1855.0
-offset_bottom = 1027.0
+offset_right = 1844.0
+offset_bottom = 991.0
 text = "goto battle"
 
 [node name="Button_to_dungeon" type="Button" parent="Node2DMenu"]
 offset_left = 1536.0
 offset_top = 960.0
-offset_right = 1664.0
-offset_bottom = 1027.0
+offset_right = 1652.0
+offset_bottom = 991.0
 text = "goto dungeon"
+
+[node name="Button_to_party" type="Button" parent="Node2DMenu"]
+offset_left = 1344.0
+offset_top = 960.0
+offset_right = 1460.0
+offset_bottom = 991.0
+text = "check party"
+
+[node name="TabContainer" type="TabContainer" parent="Node2DMenu"]
+visible = false
+offset_left = 184.0
+offset_top = 128.0
+offset_right = 2400.0
+offset_bottom = 580.0
+scale = Vector2(0.696707, 1.7001)
+
+[node name="TabBar" type="TabBar" parent="Node2DMenu/TabContainer"]
+layout_mode = 2
+clip_tabs = false
+
+[node name="TextureRect_Left" type="TextureRect" parent="Node2DMenu/TabContainer/TabBar"]
+layout_mode = 2
+offset_left = 103.343
+offset_top = 6.64482
+offset_right = 838.343
+offset_bottom = 399.645
+expand_mode = 2
+
+[node name="RichTextLabel_Left" type="RichTextLabel" parent="Node2DMenu/TabContainer/TabBar"]
+layout_mode = 2
+offset_left = 838.229
+offset_top = 8.99763
+offset_right = 1251.23
+offset_bottom = 238.998
+scale = Vector2(3.1232, 1.64341)
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAA
+AAAAAAAAAAAAAAA
+AAAAAAAAAAAAA
+AAAA"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TabBar2" type="TabBar" parent="Node2DMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect_Mid" type="TextureRect" parent="Node2DMenu/TabContainer/TabBar2"]
+layout_mode = 2
+offset_left = 80.3781
+offset_top = 8.99761
+offset_right = 838.378
+offset_bottom = 415.998
+expand_mode = 3
+
+[node name="RichTextLabel_Mid" type="RichTextLabel" parent="Node2DMenu/TabContainer/TabBar2"]
+layout_mode = 2
+offset_left = 838.229
+offset_top = 11.3504
+offset_right = 1290.23
+offset_bottom = 237.35
+scale = Vector2(2.84434, 1.65348)
+text = "BBBBBBBBBBBBB
+BBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBB
+BBBBB
+BBBBBBBBBBBBBBB"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TabBar3" type="TabBar" parent="Node2DMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect_Right" type="TextureRect" parent="Node2DMenu/TabContainer/TabBar3"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = 11.0
+offset_right = 838.0
+offset_bottom = 416.0
+expand_mode = 3
+
+[node name="RichTextLabel_Right" type="RichTextLabel" parent="Node2DMenu/TabContainer/TabBar3"]
+layout_mode = 2
+offset_left = 838.0
+offset_top = 9.0
+offset_right = 1132.0
+offset_bottom = 236.0
+scale = Vector2(4.42058, 1.65409)
+text = "CCCCCCCCCCCCCC
+CC
+CCCCCCCCCC
+CCCCCCCCCCCCCCC
+CCCCC
+CCCCCCCCCCCCCCCCCCCC"
+fit_content = true
+autowrap_mode = 0
 
 [connection signal="pressed" from="Node2DMenu/Button_to_battle" to="." method="_on_button_to_battle_pressed"]
 [connection signal="pressed" from="Node2DMenu/Button_to_dungeon" to="." method="_on_button_to_dungeon_pressed"]
+[connection signal="pressed" from="Node2DMenu/Button_to_party" to="." method="_on_button_to_party_pressed"]
