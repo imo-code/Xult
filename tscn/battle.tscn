@@ -1,67 +1,225 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcuvj1ybm0o21"]
+[gd_scene load_steps=5 format=3 uid="uid://bcuvj1ybm0o21"]
 
 [ext_resource type="Script" path="res://tscn/battle.gd" id="1_we0oy"]
+[ext_resource type="Texture2D" uid="uid://o4gk6tvol2vy" path="res://art/flutter.png" id="2_u8lcg"]
+[ext_resource type="Texture2D" uid="uid://d3iq03r2ggdpw" path="res://art/berry.png" id="3_toln2"]
 
 [sub_resource type="Theme" id="Theme_kcl3g"]
 
 [node name="battle" type="Node2D"]
 script = ExtResource("1_we0oy")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BG_ColorRect" type="ColorRect" parent="."]
 offset_top = 2.0
 offset_right = 1918.0
 offset_bottom = 1080.0
 color = Color(0.337255, 0.133333, 0.14902, 1)
 
-[node name="MenuBar" type="MenuBar" parent="."]
-offset_left = 219.0
-offset_top = 903.0
-offset_right = 1912.0
-offset_bottom = 1070.0
+[node name="Info_ColorRect" type="ColorRect" parent="BG_ColorRect"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 30.0
+offset_right = 192.0
+offset_bottom = 1046.0
+color = Color(0.356863, 0.701961, 0.819608, 0.211765)
+
+[node name="PlayerInfoContainer" type="VBoxContainer" parent="BG_ColorRect/Info_ColorRect"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 1016.0
+
+[node name="InfoTextureRect" type="TextureRect" parent="BG_ColorRect/Info_ColorRect"]
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 160.0
+texture = ExtResource("2_u8lcg")
+expand_mode = 3
+
+[node name="InfoRichTextLabel" type="RichTextLabel" parent="BG_ColorRect/Info_ColorRect"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 144.0
+offset_bottom = 1000.0
+text = "Lorem ipsum dolor sit amet, an ius partiendo definiebas contentiones. Vis ei possit numquam. Usu laudem elaboraret intellegebat et, eum libris sapientem posidonium at. Quo eu lorem nobis phaedrum. Mei option qualisque ut, maiestatis delicatissimi conclusionemque eos ne, eu dico porro vis.
+
+Id cum veri meis inermis. Eum cu unum scripta principes. Id probo nostrud mentitum vix, ex dolore equidem explicari vim. Vix eius feugiat no, deserunt sententiae usu eu. Has enim ferri apeirian ne, eu eos partem recusabo. Paulo contentiones quo ei.
+
+Eum cu reque latine nonumes. Ea inani graece pro, ad usu deseruisse argumentum. Cu error molestiae eum, quis saepe oratio quo ei, salutatus evertitur ut vis. Mea inermis definitionem ex, congue aliquip sanctus pri at. Viris explicari has ut.
+
+Principes moderatius eu sit, ius modo tamquam an. Ne ius civibus expetenda suscipiantur, id soleat appellantur his. Error accumsan corrumpit eos ne. Cu duis perfecto delicata his.
+
+Vix et quot paulo disputationi, simul euismod eum an, ea dolore impetus adipiscing sea. Vel invenire scripserit te, quo quaeque posidonium ex, elit novum soleat et vis. Per at enim placerat, iuvaret fuisset nominavi vel at. Nec at homero virtute, vim aperiri fastidii periculis ei, deleniti postulant usu an. Tation veniam complectitur vel ut. Eum cu corpora nominavi, vis utinam honestatis ad, id vero maiestatis vix.
+
+Mel recusabo repudiandae ad. Viris copiosae maluisset id pri, nec duis appetere gloriatur te. Quodsi labores eam at, ullum iudicabit an nec. Persius civibus an qui. Sit quod vide libris ei, clita recteque efficiantur sea in.
+
+Nonumy lucilius consetetur sed ad, ei noster vituperata qui. Brute nobis vel ad, per fabulas adipiscing theophrastus te. Tantas appareat oporteat id sed, odio dignissim ad sit, vim cetero deleniti legendos id. Nam eu suas labore, sit apeirian accommodare in, alienum assentior deseruisse eam ex. No idque mazim euripidis sit, pri dolor tollit an, ne cum convenire dignissim.
+
+Elitr theophrastus eam ne, id nam fuisset forensibus. Cu alia petentium usu. Te esse nibh nonumy sit, mel in clita sapientem. An altera inimicus sapientem cum. Augue deleniti atomorum ad sit, vim cu animal partiendo, ne audiam adipisci argumentum est.
+
+Sea sumo molestiae ad, no vix volutpat vituperata, cotidieque necessitatibus his no. Mel ea invenire consulatu contentiones. Usu abhorreant interpretaris cu. At ornatus maluisset necessitatibus ius, solet atomorum dissentias et sit. Qui ex tollit vidisse utroque, id quo scaevola nominati.
+
+Iuvaret intellegat vis in, eu augue soluta principes cum. Usu nobis melius ex, option alterum dissentias an mel, ne nam menandri principes. Postea adipisci neglegentur sea at, vero facete sea ne, graeci delenit mea cu. Qui detracto consetetur liberavisse an. Te eam esse signiferumque, ad pro alienum platonem dissentiunt, est porro iudicabit cotidieque ad."
+
+[node name="Enemy_ColorRect" type="ColorRect" parent="BG_ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.028
+anchor_right = 0.984
+anchor_bottom = 0.592
+offset_left = 0.199997
+offset_top = -0.184
+offset_right = 0.687988
+offset_bottom = -0.176025
+color = Color(0.894118, 0.419608, 0.486275, 0.207843)
+
+[node name="EnemySpriteContainer" type="BoxContainer" parent="BG_ColorRect/Enemy_ColorRect"]
+offset_right = 1696.0
+offset_bottom = 608.0
+alignment = 1
+
+[node name="EnemyTextureButton" type="TextureButton" parent="BG_ColorRect/Enemy_ColorRect/EnemySpriteContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_u8lcg")
+texture_pressed = ExtResource("3_toln2")
+stretch_mode = 5
+
+[node name="Player_ColorRect" type="ColorRect" parent="BG_ColorRect"]
+layout_mode = 2
+offset_left = 192.0
+offset_top = 638.0
+offset_right = 1888.0
+offset_bottom = 806.0
+color = Color(0.541176, 0.541176, 0.541176, 0.227451)
+
+[node name="PlayerSpriteContainer" type="Node" parent="BG_ColorRect/Player_ColorRect"]
+
+[node name="LeftPartyTex" type="TextureButton" parent="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer"]
+offset_left = 320.0
+offset_top = 640.0
+offset_right = 512.0
+offset_bottom = 808.0
+texture_normal = ExtResource("3_toln2")
+texture_pressed = ExtResource("3_toln2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer"]
+visible = false
+custom_minimum_size = Vector2(330, 0)
+offset_left = 681.0
+offset_right = 1011.0
+offset_bottom = 168.0
+
+[node name="MidPartyTex" type="TextureButton" parent="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer"]
+offset_left = 640.0
+offset_top = 648.0
+offset_right = 832.0
+offset_bottom = 808.0
+texture_normal = ExtResource("3_toln2")
+texture_pressed = ExtResource("3_toln2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer"]
+visible = false
+custom_minimum_size = Vector2(330, 0)
+offset_left = 852.0
+offset_right = 1182.0
+offset_bottom = 168.0
+
+[node name="RightPartyTex" type="TextureButton" parent="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer"]
+offset_left = 960.0
+offset_top = 640.0
+offset_right = 1152.0
+offset_bottom = 808.0
+action_mode = 0
+texture_normal = ExtResource("3_toln2")
+texture_pressed = ExtResource("3_toln2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Menu_ColorRect" type="ColorRect" parent="BG_ColorRect"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 806.0
+offset_right = 1888.0
+offset_bottom = 1046.0
+color = Color(0.0745098, 0.0901961, 0.364706, 0.262745)
+
+[node name="Menu_MenuBar" type="MenuBar" parent="BG_ColorRect/Menu_ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.4
+anchor_right = 0.035
+anchor_bottom = 0.4
+offset_left = -59.36
+offset_top = -96.0
+offset_right = 1633.64
+offset_bottom = 144.0
 theme = SubResource("Theme_kcl3g")
 
-[node name="ColorRect" type="ColorRect" parent="MenuBar"]
+[node name="Button_return" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
 layout_mode = 0
-offset_left = -59.0
-offset_top = -95.0
-offset_right = 1637.0
-offset_bottom = 145.0
-color = Color(0.0784314, 0.0941176, 0.180392, 0.411765)
-
-[node name="Button_return" type="Button" parent="MenuBar"]
-layout_mode = 0
-offset_left = 1509.0
-offset_top = 57.0
-offset_right = 1575.0
-offset_bottom = 88.0
+offset_left = 1568.0
+offset_top = 144.0
+offset_right = 1634.0
+offset_bottom = 175.0
 text = "return"
 
-[node name="Button" type="Button" parent="MenuBar"]
+[node name="spellButton1" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+visible = false
 layout_mode = 0
-offset_left = -27.0
-offset_top = -71.0
-offset_right = 101.0
-offset_bottom = -8.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 87.0
 
-[node name="Button2" type="Button" parent="MenuBar"]
+[node name="spellButton2" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+visible = false
 layout_mode = 0
-offset_left = -27.0
-offset_top = 57.0
-offset_right = 101.0
-offset_bottom = 120.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 160.0
+offset_bottom = 191.0
 
-[node name="Button3" type="Button" parent="MenuBar"]
+[node name="spellButton3" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+visible = false
 layout_mode = 0
-offset_left = 165.0
-offset_top = -71.0
-offset_right = 293.0
-offset_bottom = -8.0
+offset_left = 224.0
+offset_top = 24.0
+offset_right = 352.0
+offset_bottom = 87.0
 
-[node name="Button4" type="Button" parent="MenuBar"]
+[node name="spellButton4" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+visible = false
 layout_mode = 0
-offset_left = 165.0
-offset_top = 57.0
-offset_right = 293.0
-offset_bottom = 120.0
+offset_left = 224.0
+offset_top = 128.0
+offset_right = 352.0
+offset_bottom = 191.0
 
-[connection signal="pressed" from="MenuBar/Button_return" to="." method="_on_button_return_pressed"]
+[node name="SelectSpellsButton" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 352.0
+offset_bottom = 192.0
+text = "Spells"
+
+[node name="SelectActionsButton" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+offset_left = 448.0
+offset_top = 32.0
+offset_right = 768.0
+offset_bottom = 192.0
+text = "Actions"
+
+[connection signal="pressed" from="BG_ColorRect/Enemy_ColorRect/EnemySpriteContainer/EnemyTextureButton" to="." method="_on_enemy_texture_button_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/LeftPartyTex" to="." method="_on_left_party_tex_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/MidPartyTex" to="." method="_on_mid_party_tex_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/RightPartyTex" to="." method="_on_right_party_tex_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Menu_ColorRect/Menu_MenuBar/Button_return" to="." method="_on_button_return_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Menu_ColorRect/Menu_MenuBar/SelectSpellsButton" to="." method="_on_select_spells_button_pressed"]
+[connection signal="pressed" from="BG_ColorRect/Menu_ColorRect/Menu_MenuBar/SelectActionsButton" to="." method="_on_select_actions_button_pressed"]

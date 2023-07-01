@@ -7,6 +7,6 @@
 
 [resource]
 script = ExtResource("4_opse7")
-left = ExtResource("2_vogm5")
-mid = ExtResource("1_jojn0")
-right = ExtResource("3_0js8j")
+left = ExtResource("3_0js8j")
+mid = ExtResource("2_vogm5")
+right = ExtResource("1_jojn0")

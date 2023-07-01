@@ -8,7 +8,7 @@ class_name Unit
 @export var tags: 	Array
 @export var spells: Array
 @export var actions: Array
-@export var tex : Texture2D
+@export var tex : CompressedTexture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_s1jy1")
 title = "Undead"
-max_hp = null
-c_hp = null
-manah = null
+max_hp = 1
+c_hp = 1
+manah = 999
 tags = ["undead", "anime", "girl"]
 spells = ["vomit", "piss"]
 actions = ["bite"]
