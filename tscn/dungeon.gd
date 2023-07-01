@@ -1,6 +1,7 @@
 extends Node3D
 
 var my_party: Party
+var enemies : Party
 var le_battle
 var enemy_ahead : bool
 var focused : bool
@@ -10,6 +11,7 @@ func _ready():
 	focused = true
 	enemy_ahead = true
 	le_battle = load("res://tscn/battle.tscn")
+	#enemies = Party
 	pass # Replace with function body.
 
 func setParty(playerparty:Party):

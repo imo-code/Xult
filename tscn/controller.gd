@@ -20,6 +20,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func set_active():
+	focused = true
+	print("set focused")
 
 func _on_button_to_dungeon_pressed():
 	var dungeon_instance = le_dungeon.instantiate()

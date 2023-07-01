@@ -34,6 +34,7 @@ offset_right = 160.0
 offset_bottom = 160.0
 texture = ExtResource("2_u8lcg")
 expand_mode = 3
+stretch_mode = 5
 
 [node name="InfoRichTextLabel" type="RichTextLabel" parent="BG_ColorRect/Info_ColorRect"]
 layout_mode = 2
