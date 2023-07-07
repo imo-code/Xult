@@ -4,6 +4,7 @@ class_name Unit
 @export var title:  String
 @export var max_hp: int
 @export var c_hp:   int
+@export var max_manah : int
 @export var manah:  int
 @export var tags: 	Array
 @export var spells: Array

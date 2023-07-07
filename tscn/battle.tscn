@@ -62,6 +62,20 @@ Sea sumo molestiae ad, no vix volutpat vituperata, cotidieque necessitatibus his
 
 Iuvaret intellegat vis in, eu augue soluta principes cum. Usu nobis melius ex, option alterum dissentias an mel, ne nam menandri principes. Postea adipisci neglegentur sea at, vero facete sea ne, graeci delenit mea cu. Qui detracto consetetur liberavisse an. Te eam esse signiferumque, ad pro alienum platonem dissentiunt, est porro iudicabit cotidieque ad."
 
+[node name="ProgressBarHeat" type="ProgressBar" parent="BG_ColorRect/Info_ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 1748.64
+offset_right = 1844.0
+offset_bottom = -240.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 3
+show_percentage = false
+
 [node name="Enemy_ColorRect" type="ColorRect" parent="BG_ColorRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -71,12 +85,13 @@ anchor_right = 0.984
 anchor_bottom = 0.592
 offset_left = 0.199997
 offset_top = -0.184
-offset_right = 0.687988
+offset_right = -95.312
 offset_bottom = -0.176025
 color = Color(0.894118, 0.419608, 0.486275, 0.207843)
 
 [node name="EnemySpriteContainer" type="BoxContainer" parent="BG_ColorRect/Enemy_ColorRect"]
-offset_right = 1696.0
+layout_mode = 0
+offset_right = 1600.0
 offset_bottom = 608.0
 alignment = 1
 
@@ -90,7 +105,7 @@ stretch_mode = 5
 layout_mode = 2
 offset_left = 192.0
 offset_top = 638.0
-offset_right = 1888.0
+offset_right = 1792.0
 offset_bottom = 806.0
 color = Color(0.541176, 0.541176, 0.541176, 0.227451)
 
@@ -140,6 +155,84 @@ texture_normal = ExtResource("3_toln2")
 texture_pressed = ExtResource("3_toln2")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="LeftProgressBarHP" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 183.584
+offset_right = 184.8
+allow_greater = true
+fill_mode = 3
+show_percentage = false
+
+[node name="LeftProgressBarRes" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 191.584
+offset_right = 192.8
+allow_greater = true
+fill_mode = 3
+show_percentage = false
+
+[node name="MidProgressBarHP" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 503.584
+offset_right = 504.8
+allow_greater = true
+fill_mode = 3
+show_percentage = false
+
+[node name="MidProgressBarRes" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 511.584
+offset_right = 512.8
+allow_greater = true
+fill_mode = 3
+show_percentage = false
+
+[node name="RightProgressBarHP" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 831.584
+offset_right = 835.552
+allow_greater = true
+fill_mode = 3
+show_percentage = false
+
+[node name="RightProgressBarRes" type="ProgressBar" parent="BG_ColorRect/Player_ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.075
+anchor_bottom = 1.0
+offset_left = 839.584
+offset_right = 843.552
+allow_greater = true
+fill_mode = 3
+show_percentage = false
 
 [node name="Menu_ColorRect" type="ColorRect" parent="BG_ColorRect"]
 layout_mode = 0
@@ -211,6 +304,7 @@ offset_bottom = 192.0
 text = "Spells"
 
 [node name="SelectActionsButton" type="Button" parent="BG_ColorRect/Menu_ColorRect/Menu_MenuBar"]
+layout_mode = 0
 offset_left = 448.0
 offset_top = 32.0
 offset_right = 768.0

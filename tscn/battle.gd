@@ -41,6 +41,16 @@ func loadGUI():
 	var psc_mid = get_node("BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/MidPartyTex")
 	var psc_right = get_node("BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/RightPartyTex")
 	
+	#declaring bars
+	var pbHPL = get_node("BG_ColorRect/Player_ColorRect/LeftProgressBarHP")
+	var pbREL = get_node("BG_ColorRect/Player_ColorRect/LeftProgressBarRes")
+	var pbHPM = get_node("BG_ColorRect/Player_ColorRect/MidProgressBarHP")
+	var pbREM = get_node("BG_ColorRect/Player_ColorRect/MidProgressBarRes")
+	var pbHPR = get_node("BG_ColorRect/Player_ColorRect/RightProgressBarHP")
+	var pbRER = get_node("BG_ColorRect/Player_ColorRect/RightProgressBarRes")
+	
+	var pbHeat = get_node("BG_ColorRect/Info_ColorRect/ProgressBarHeat")
+	
 	#declaring unit stats
 	var itex = get_node("BG_ColorRect/Info_ColorRect/InfoTextureRect")
 	var ilab = get_node("BG_ColorRect/Info_ColorRect/InfoRichTextLabel")
@@ -48,24 +58,45 @@ func loadGUI():
 	var t = ""
 	ilab.text = ""
 	
+	pbHeat.visible = true
+	pbHeat.value = 33
+	
 	if(my_party.left):
 		psc_left.texture_normal=my_party.left.tex
 		t += my_party.left.title + "\n\t" + str(my_party.left.c_hp) + "/" + str(my_party.left.max_hp)
 		t += "\n\t" + str(my_party.left.tags) 
 		t += "\n\n"
 		selected_unit = my_party.left
+		pbHPL.visible = true
+		pbHPL.max_value = my_party.left.max_hp
+		pbHPL.value = my_party.left.c_hp
+		pbREL.visible = true
+		pbREL.max_value = my_party.left.max_manah
+		pbREL.value = my_party.left.manah
 	if(my_party.mid):
 		psc_mid.texture_normal=my_party.mid.tex
 		t += my_party.mid.title + "\n\t" + str(my_party.mid.c_hp) + "/" + str(my_party.mid.max_hp)
 		t += "\n\t" + str(my_party.mid.tags)
 		t += "\n\n"
+		pbHPM.visible = true
+		pbHPM.max_value = my_party.mid.max_hp
+		pbHPM.value = my_party.mid.c_hp
+		pbREM.visible = true
+		pbREM.max_value = my_party.mid.max_manah
+		pbREM.value = my_party.mid.manah
+		
 		if(!my_party.left):
 			selected_unit = my_party.mid
-		
 	if(my_party.right):
 		psc_right.texture_normal=my_party.right.tex
 		t += my_party.right.title + "\n\t" + str(my_party.right.c_hp) + "/" + str(my_party.right.max_hp)
 		t += "\n\t" + str(my_party.right.tags)
+		pbHPR.visible = true
+		pbHPR.max_value = my_party.right.max_hp
+		pbHPR.value = my_party.right.c_hp
+		pbRER.visible = true
+		pbRER.max_value = my_party.right.max_manah
+		pbRER.value = my_party.right.manah
 		if(!my_party.left and !my_party.mid):
 			selected_unit = my_party.right
 	ilab.text = t
@@ -100,6 +131,7 @@ func set_buttons(setup:MenuPage):
 			s.visible = true
 		
 	load_spells(selected_unit)
+
 	
 func load_spells(u : Unit):
 	var sb1 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton1")
