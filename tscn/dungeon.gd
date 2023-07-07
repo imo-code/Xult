@@ -1,7 +1,7 @@
 extends Node3D
 
 var my_party: Party
-var enemies : Party
+var enemy_party : Party
 var le_battle
 var enemy_ahead : bool
 var focused : bool
@@ -17,6 +17,9 @@ func _ready():
 func setParty(playerparty:Party):
 	my_party = playerparty
 
+func setEnemyParty(enemies : Party):
+	enemy_party = enemies
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -28,6 +31,7 @@ func _input(event):
 	if event.is_action_pressed("ui_up") and enemy_ahead:
 		var battle_instance = le_battle.instantiate()
 		battle_instance.setParty(my_party)
+		battle_instance.setEnemyParty(enemy_party)
 		battle_instance.loadGUI()
 		focused = false
 		add_child(battle_instance)

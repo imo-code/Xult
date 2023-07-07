@@ -3,6 +3,7 @@ extends Node2D
 #var le_battle
 var le_dungeon
 var my_party : Party
+var enemy_party : Party 
 var focused : bool
 
 
@@ -12,12 +13,14 @@ func _ready():
 #	le_battle = load("res://tscn/battle.tscn")
 	le_dungeon = load("res://tscn/dungeon.tscn")
 	my_party = load("res://resources/my_party.tres")
+	enemy_party = load("res://resources/enemies_example.tres")
 	focused = true
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#check here if dungeon is done
 	pass
 
 func set_active():
@@ -27,6 +30,7 @@ func set_active():
 func _on_button_to_dungeon_pressed():
 	var dungeon_instance = le_dungeon.instantiate()
 	dungeon_instance.setParty(my_party)
+	dungeon_instance.setEnemyParty(enemy_party)
 	add_child(dungeon_instance)
 	focused = false
 	#get_tree().root.add_child(dungeon_instance)

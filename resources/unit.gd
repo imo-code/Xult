@@ -6,6 +6,7 @@ class_name Unit
 @export var c_hp:   int
 @export var max_manah : int
 @export var manah:  int
+@export var is_mine: bool
 @export var tags: 	Array
 @export var spells: Array
 @export var actions: Array
@@ -15,7 +16,6 @@ class_name Unit
 func _ready():
 	pass # Replace with function body.
 
-	
 func get_tags():
 	return tags
 	

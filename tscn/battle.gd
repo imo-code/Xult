@@ -3,6 +3,7 @@ extends Node2D
 var my_party : Party
 var menu_page : MenuPage
 var selected_unit : Unit
+var enemy_party : Party
 var enemy : Unit
 var active : bool
 
@@ -14,11 +15,11 @@ enum MenuPage {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var sb1 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton1")
-	var sb2 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton2")
-	var sb3 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton3")
-	var sb4 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton4")
-	var sb = [sb1,sb2,sb3,sb4]
+#	var sb1 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton1")
+#	var sb2 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton2")
+#	var sb3 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton3")
+#	var sb4 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton4")
+#	var sb = [sb1,sb2,sb3,sb4]
 	
 	active = true
 	#visible = false
@@ -32,7 +33,8 @@ func _process(_delta):
 func setParty(playerparty:Party):
 	my_party = playerparty
 
-func setEnemy(enemies:Party):
+func setEnemyParty(enemies:Party):
+	enemy_party = enemies
 	enemy = enemies.mid
 
 func loadGUI():
@@ -40,6 +42,7 @@ func loadGUI():
 	var psc_left = get_node("BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/LeftPartyTex")
 	var psc_mid = get_node("BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/MidPartyTex")
 	var psc_right = get_node("BG_ColorRect/Player_ColorRect/PlayerSpriteContainer/RightPartyTex")
+	var psc_enemy_mid = get_node("BG_ColorRect/Enemy_ColorRect/EnemySpriteContainer/EnemyTextureButton")
 	
 	#declaring bars
 	var pbHPL = get_node("BG_ColorRect/Player_ColorRect/LeftProgressBarHP")
@@ -50,7 +53,7 @@ func loadGUI():
 	var pbRER = get_node("BG_ColorRect/Player_ColorRect/RightProgressBarRes")
 	
 	var pbHeat = get_node("BG_ColorRect/Info_ColorRect/ProgressBarHeat")
-	
+	var pbHPenemyMid = get_node("BG_ColorRect/Enemy_ColorRect/ProgressBarEnemyHPmid")
 	#declaring unit stats
 	var itex = get_node("BG_ColorRect/Info_ColorRect/InfoTextureRect")
 	var ilab = get_node("BG_ColorRect/Info_ColorRect/InfoRichTextLabel")
@@ -61,45 +64,53 @@ func loadGUI():
 	pbHeat.visible = true
 	pbHeat.value = 33
 	
+	#enemy party
+	psc_enemy_mid.texture_normal = enemy_party.mid.tex
+	pbHPenemyMid.max_value = enemy_party.mid.max_hp
+	pbHPenemyMid.value = enemy_party.mid.max_hp
+	select_unit(enemy_party.mid)
+	
+	#my party
 	if(my_party.left):
 		psc_left.texture_normal=my_party.left.tex
-		t += my_party.left.title + "\n\t" + str(my_party.left.c_hp) + "/" + str(my_party.left.max_hp)
-		t += "\n\t" + str(my_party.left.tags) 
-		t += "\n\n"
-		selected_unit = my_party.left
+#		t += my_party.left.title + "\n\t" + str(my_party.left.c_hp) + "/" + str(my_party.left.max_hp)
+#		t += "\n\t" + str(my_party.left.tags) 
+#		t += "\n\n"
 		pbHPL.visible = true
 		pbHPL.max_value = my_party.left.max_hp
 		pbHPL.value = my_party.left.c_hp
 		pbREL.visible = true
 		pbREL.max_value = my_party.left.max_manah
 		pbREL.value = my_party.left.manah
+#		selected_unit = my_party.left
+		
 	if(my_party.mid):
 		psc_mid.texture_normal=my_party.mid.tex
-		t += my_party.mid.title + "\n\t" + str(my_party.mid.c_hp) + "/" + str(my_party.mid.max_hp)
-		t += "\n\t" + str(my_party.mid.tags)
-		t += "\n\n"
+#		t += my_party.mid.title + "\n\t" + str(my_party.mid.c_hp) + "/" + str(my_party.mid.max_hp)
+#		t += "\n\t" + str(my_party.mid.tags)
+#		t += "\n\n"
 		pbHPM.visible = true
 		pbHPM.max_value = my_party.mid.max_hp
 		pbHPM.value = my_party.mid.c_hp
 		pbREM.visible = true
 		pbREM.max_value = my_party.mid.max_manah
 		pbREM.value = my_party.mid.manah
-		
-		if(!my_party.left):
-			selected_unit = my_party.mid
+#		if(!my_party.left):
+#			selected_unit = my_party.mid
+			
 	if(my_party.right):
 		psc_right.texture_normal=my_party.right.tex
-		t += my_party.right.title + "\n\t" + str(my_party.right.c_hp) + "/" + str(my_party.right.max_hp)
-		t += "\n\t" + str(my_party.right.tags)
+#		t += my_party.right.title + "\n\t" + str(my_party.right.c_hp) + "/" + str(my_party.right.max_hp)
+#		t += "\n\t" + str(my_party.right.tags)
 		pbHPR.visible = true
 		pbHPR.max_value = my_party.right.max_hp
 		pbHPR.value = my_party.right.c_hp
 		pbRER.visible = true
 		pbRER.max_value = my_party.right.max_manah
 		pbRER.value = my_party.right.manah
-		if(!my_party.left and !my_party.mid):
-			selected_unit = my_party.right
-	ilab.text = t
+#		if(!my_party.left and !my_party.mid):
+#			selected_unit = my_party.right
+#	ilab.text = t
 
 func set_buttons(setup:MenuPage):
 	menu_page = setup
@@ -129,21 +140,22 @@ func set_buttons(setup:MenuPage):
 			b.visible = false
 		for s in sb:
 			s.visible = true
-		
-	load_spells(selected_unit)
-
 	
 func load_spells(u : Unit):
-	var sb1 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton1")
-	var sb2 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton2")
-	var sb3 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton3")
-	var sb4 = get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton4")
-	var sb = [sb1,sb2,sb3,sb4]
-	
+	var sb = [get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton1"),
+			get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton2"),
+			get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton3"),
+			get_node("BG_ColorRect/Menu_ColorRect/Menu_MenuBar/spellButton4")]
 	var i =0 
-	for s in u.spells:
-		if(menu_page == MenuPage.SPELLS):
-			sb[i].visible=true
+	var list = u.spells
+	if(menu_page == MenuPage.ACTIONS):
+		list = u.actions
+	for s in list:
+		if(menu_page == MenuPage.SPELLS or menu_page == MenuPage.ACTIONS):
+			sb[i].visible = true
+			sb[i].disabled = false
+			if(!u.is_mine):
+				sb[i].disabled = true
 		sb[i].text = s
 		i += 1
 	while(i < sb.size()):
@@ -152,14 +164,19 @@ func load_spells(u : Unit):
 
 func select_unit(u : Unit):
 	var itr = get_node("BG_ColorRect/Info_ColorRect/InfoTextureRect")
+	var infolabel = get_node("BG_ColorRect/Info_ColorRect/InfoRichTextLabel")
+	selected_unit = u 
 	itr.texture = u.tex
+	var text = u.title + "\n\nqualities\n"
+	for t in u.tags:
+		text += "\t" + str(t) + "\n"
 	
-	load_spells(u)
-	
-	pass
+	infolabel.text = text
+	load_spells(selected_unit)
 
 func _on_select_spells_button_pressed():
 	set_buttons(MenuPage.SPELLS)
+	load_spells(selected_unit)
 
 func _on_select_actions_button_pressed():
 	set_buttons(MenuPage.ACTIONS)
@@ -189,6 +206,6 @@ func _on_right_party_tex_pressed():
 
 
 func _on_enemy_texture_button_pressed():
-	var itr = get_node("BG_ColorRect/Info_ColorRect/InfoTextureRect")
-	#itr.texture = enemy.tex
+#	var itr = get_node("BG_ColorRect/Info_ColorRect/InfoTextureRect")
+	select_unit(enemy_party.mid)
 	pass # Replace with function body.
