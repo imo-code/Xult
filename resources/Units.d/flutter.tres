@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://dwjpadobehv4d"]
+
+[ext_resource type="Script" path="res://resources/unit.gd" id="1_j4ahc"]
+[ext_resource type="Texture2D" uid="uid://o4gk6tvol2vy" path="res://art/flutter.png" id="6_8ow3d"]
+
+[resource]
+script = ExtResource("1_j4ahc")
+title = "sex horse"
+max_hp = 999
+c_hp = 999
+max_manah = 999
+manah = 999
+is_mine = false
+tags = ["horse", "girl", "goth"]
+spells = [0, 5, 1, 3]
+actions = ["attack", "defend"]
+tex = ExtResource("6_8ow3d")
