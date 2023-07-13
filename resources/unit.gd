@@ -7,8 +7,8 @@ class_name Unit
 @export var max_manah : int
 @export var manah:  int
 @export var is_mine: bool
-@export var tags: 	Array
-@export var spells: Array
+@export var tags: Array
+@export var spells: Array #array of spell_enum (ints)
 @export var actions: Array
 @export var tex : CompressedTexture2D
 

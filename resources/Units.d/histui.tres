@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://crd7svkfnkg72"]
+
+[ext_resource type="Script" path="res://resources/unit.gd" id="1_pegfe"]
+[ext_resource type="Texture2D" uid="uid://2p6muvwkar1i" path="res://art/hitsui.png" id="4_7abdx"]
+
+[resource]
+script = ExtResource("1_pegfe")
+title = "Lonely Maido"
+max_hp = 700
+c_hp = 700
+max_manah = 10
+manah = 10
+is_mine = true
+tags = ["anime", "girl"]
+spells = [4, 0, 3]
+actions = ["chair"]
+tex = ExtResource("4_7abdx")
