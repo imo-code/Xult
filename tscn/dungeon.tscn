@@ -1,55 +1,127 @@
-[gd_scene load_steps=8 format=3 uid="uid://0bui0h3kn5sa"]
+[gd_scene load_steps=7 format=3 uid="uid://0bui0h3kn5sa"]
 
 [ext_resource type="Script" path="res://tscn/dungeon.gd" id="1_tok1v"]
-[ext_resource type="Texture2D" uid="uid://o4gk6tvol2vy" path="res://art/flutter.png" id="2_n5dw3"]
+[ext_resource type="PackedScene" uid="uid://dnxn8cmw6nnia" path="res://tscn/dungeon_player.tscn" id="2_kbd02"]
+[ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="2_vxmcn"]
+[ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="3_mb8g6"]
+[ext_resource type="Texture2D" uid="uid://2p6muvwkar1i" path="res://art/hitsui.png" id="4_yw705"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sjyf2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og3wh"]
-albedo_color = Color(0.45098, 0.227451, 0.333333, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_i2dy3"]
-material = SubResource("StandardMaterial3D_og3wh")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07x7i"]
-albedo_texture = ExtResource("2_n5dw3")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vf8qe"]
-material = SubResource("StandardMaterial3D_07x7i")
+[sub_resource type="Environment" id="Environment_av5xj"]
 
 [node name="dungeon" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00741696, 0)
 script = ExtResource("1_tok1v")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07786, 3.70944)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_av5xj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="OmniLight3D_red" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+light_color = Color(0.623529, 0.0627451, 0, 1)
+light_energy = 0.33
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_sjyf2")
+[node name="OmniLight3D_pink" type="OmniLight3D" parent="."]
+light_color = Color(0.996078, 0.435294, 1, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("PlaneMesh_i2dy3")
-skeleton = NodePath("../CollisionShape3D")
+[node name="DungeonPlayer" parent="." instance=ExtResource("2_kbd02")]
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.10911, -0.99403, 0, 0.99403, -0.10911, 0, 8.57895, -19.9514)
+[node name="blocks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("WorldBoundaryShape3D_sjyf2")
+[node name="LevelBlock" type="Node3D" parent="blocks"]
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+north_face = 336
+west_face = 335
+top_face = 337
+bottom_face = 345
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("PlaneMesh_i2dy3")
-skeleton = NodePath("../CollisionShape3D")
+[node name="LevelBlock2" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+north_face = 337
+east_face = 338
+top_face = 326
+bottom_face = 345
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3, 4, -2)
-mesh = SubResource("PlaneMesh_vf8qe")
+[node name="LevelBlock3" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+north_face = 336
+east_face = 337
+west_face = 335
+top_face = 326
+bottom_face = 345
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62758, 5.11835, 3.68356)
-light_energy = 4.261
-omni_range = 59.717
+[node name="LevelBlock4" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+east_face = 337
+south_face = 334
+top_face = 326
+bottom_face = 345
+
+[node name="LevelBlock5" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+top_face = 326
+bottom_face = 345
+
+[node name="LevelBlock6" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+south_face = 334
+west_face = 335
+top_face = 326
+bottom_face = 345
+
+[node name="LevelBlock7" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+east_face = 337
+west_face = 335
+top_face = 326
+bottom_face = 345
+
+[node name="LevelBlock8" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+east_face = 337
+west_face = 335
+top_face = 326
+bottom_face = 345
+
+[node name="LevelBlock9" type="Node3D" parent="blocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+script = ExtResource("2_vxmcn")
+material = ExtResource("3_mb8g6")
+texture_sheet = ExtResource("4_yw705")
+texture_size = 31.0
+east_face = 337
+south_face = 334
+west_face = 335
+top_face = 326
+bottom_face = 345

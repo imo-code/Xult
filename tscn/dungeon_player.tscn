@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnxn8cmw6nnia"]
+
+[ext_resource type="Script" path="res://tscn/dungeon_player.gd" id="1_3ujpo"]
+
+[node name="DungeonPlayer" type="Node3D"]
+script = ExtResource("1_3ujpo")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+fov = 90.0
+
+[node name="BackRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 2)
+debug_shape_custom_color = Color(0.654902, 0, 0, 1)
+
+[node name="FrontRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -2)
+debug_shape_custom_color = Color(0.396078, 0.160784, 0.231373, 1)
+
+[node name="playerLight" type="OmniLight3D" parent="."]
+light_color = Color(0.294118, 0.560784, 1, 1)
+light_energy = 0.5

@@ -9,7 +9,7 @@ var focused : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	focused = true
-	enemy_ahead = true
+	enemy_ahead = false
 	le_battle = load("res://tscn/battle.tscn")
 	#enemies = Party
 	pass # Replace with function body.
