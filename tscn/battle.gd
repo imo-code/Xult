@@ -181,7 +181,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if(menu_page == MenuPage.SPELLS or menu_page == MenuPage.ACTIONS):
 			set_buttons(MenuPage.MAIN)
-			
+
 
 func _on_left_party_tex_pressed():
 	select_unit(my_party.left)

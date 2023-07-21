@@ -1,21 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnxn8cmw6nnia"]
+[gd_scene load_steps=3 format=3 uid="uid://dnxn8cmw6nnia"]
 
 [ext_resource type="Script" path="res://tscn/dungeon_player.gd" id="1_3ujpo"]
 
-[node name="DungeonPlayer" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_7hwbq"]
+
+[node name="DungeonPlayer" type="Node3D" groups=["player"]]
 script = ExtResource("1_3ujpo")
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="." groups=["player"]]
+visible = false
 fov = 90.0
 
-[node name="BackRayCast" type="RayCast3D" parent="."]
+[node name="BackRayCast" type="RayCast3D" parent="." groups=["player"]]
 target_position = Vector3(0, 0, 2)
-debug_shape_custom_color = Color(0.654902, 0, 0, 1)
+debug_shape_custom_color = Color(0.427451, 0.32549, 0, 1)
 
-[node name="FrontRayCast" type="RayCast3D" parent="."]
+[node name="FrontRayCast" type="RayCast3D" parent="." groups=["player"]]
 target_position = Vector3(0, 0, -2)
-debug_shape_custom_color = Color(0.396078, 0.160784, 0.231373, 1)
+debug_shape_custom_color = Color(0.14902, 0, 0.733333, 1)
 
-[node name="playerLight" type="OmniLight3D" parent="."]
+[node name="RightRayCast" type="RayCast3D" parent="." groups=["player"]]
+target_position = Vector3(2, 0, 0)
+debug_shape_custom_color = Color(0.631373, 0, 0.321569, 1)
+
+[node name="LeftRayCast" type="RayCast3D" parent="." groups=["player"]]
+target_position = Vector3(-2, 0, 0)
+debug_shape_custom_color = Color(0, 0.294118, 0.262745, 1)
+
+[node name="playerLight" type="OmniLight3D" parent="." groups=["player"]]
 light_color = Color(0.294118, 0.560784, 1, 1)
 light_energy = 0.5
+
+[node name="RigidBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+floor_stop_on_slope = false
+floor_block_on_wall = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" groups=["player"]]
+shape = SubResource("SphereShape3D_7hwbq")

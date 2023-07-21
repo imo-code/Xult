@@ -21,18 +21,33 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#check here if dungeon is done
+	if not le_dungeon:
+		focused = true
 	pass
+	
+func spawn_dungeon():
+	var dungeon_instance = le_dungeon.instantiate()
+	dungeon_instance.set_party(my_party)
+	#dungeon_instance.set_enemy_party(enemy_party)
+	dungeon_instance.set_parent(self) #red flag. todo signal up whatever that means
+	add_child(dungeon_instance)
+	focused = false
+	#visible = false
 
-func set_active():
+func _input(event):
+	if event.is_action_pressed("my_up") or event.is_action_pressed("my_w"):
+		if focused:
+			spawn_dungeon()
+	if event.is_action_pressed("my_esc") and focused:
+		print("my_esc pressed")
+		get_tree().quit()
+
+func set_focused():
 	focused = true
 	print("set focused")
 
 func _on_button_to_dungeon_pressed():
-	var dungeon_instance = le_dungeon.instantiate()
-	dungeon_instance.setParty(my_party)
-	dungeon_instance.setEnemyParty(enemy_party)
-	add_child(dungeon_instance)
-	focused = false
+	spawn_dungeon()
 	#get_tree().root.add_child(dungeon_instance)
 	#visible = false
 
